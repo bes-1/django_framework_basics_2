@@ -4,12 +4,22 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    return render(request, 'mainapp/index.html')
+    context = {
+        'title': 'Магазин'
+    }
+    return render(request, 'mainapp/index.html', context)
 
 
-def products(request):
-    return render(request, 'mainapp/products.html')
+def products(request, name=None):
+    context = {
+        'category': ['Все', 'Дом', 'Офис', 'Модерн', 'Классика'],
+        'title': 'Продукты',
+    }
+    return render(request, 'mainapp/products.html', context)
 
 
 def contact(request):
-    return render(request, 'mainapp/contact.html')
+    context = {
+        'title': 'Контакты'
+    }
+    return render(request, 'mainapp/contact.html', context)
