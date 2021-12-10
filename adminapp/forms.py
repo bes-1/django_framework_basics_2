@@ -5,7 +5,7 @@ from django.forms import HiddenInput, forms
 from django import forms
 
 from authapp.models import ShopUser
-from mainapp.models import ProductCategory
+from mainapp.models import ProductCategory, Product
 
 
 class ShopUserAdminEditForm(UserChangeForm):
@@ -37,6 +37,17 @@ class ShopUserAdminEditForm(UserChangeForm):
 class ProductCategoryForm(forms.ModelForm):
     class Meta:
         model = ProductCategory
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):

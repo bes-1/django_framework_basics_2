@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 
 from django.urls import reverse
 
-from adminapp.forms import ShopUserAdminEditForm, ProductCategoryForm
+from adminapp.forms import ShopUserAdminEditForm, ProductCategoryForm, ProductForm
 from authapp.forms import ShopUserRegisterForm, ShopUserEditForm
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product
@@ -129,19 +129,54 @@ def products(request, pk):
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_create(request):
-    pass
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('adminapp:products'))
+    else:
+        form = ProductForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'adminapp/product_form.html', context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_update(request, pk):
-    pass
+    product_item = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product_item)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(f'/admin/products/{product_item.category_id}')
+    else:
+        form = ProductForm(instance=product_item)
+    context = {
+        'form': form,
+    }
+    return render(request, 'adminapp/product_form.html', context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_delete(request, pk):
-    pass
+    product_item = get_object_or_404(Product, pk=pk)
+
+    if request.method == 'POST':
+        product_item.is_active = False
+        product_item.save()
+        return HttpResponseRedirect(f'/admin/products/{product_item.category_id}')
+
+    context = {
+        'object': product_item,
+    }
+    return render(request, 'adminapp/product_delete.html', context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_read(request, pk):
-    pass
+    product_item = get_object_or_404(Product, pk=pk)
+    context = {
+        'product_item': product_item
+    }
+    return render(request, 'adminapp/product_form_read.html', context)
