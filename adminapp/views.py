@@ -28,6 +28,9 @@ class UsersListView(ListView):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    # def get_queryset(self):
+    #     return ShopUser.objects.filter(is_superuser=False)
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def user_create(request):
@@ -147,6 +150,11 @@ class ProductCategoryDeleteView(DeleteView):
     template_name = 'adminapp/category_delete.html'
     success_url = reverse_lazy('adminapp:categories')
 
+    # def delete(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #     self.object.is_active = False
+    #     select.object.save()
+    #     return HttpResponseRedirect(self.success_url)
 
 @user_passes_test(lambda u: u.is_superuser)
 def products(request, pk):
@@ -182,12 +190,21 @@ class ProductCreateView(CreateView):
     form_class = ProductForm
     success_url = reverse_lazy('adminapp:categories')
 
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
+    def _get_category(self):
         category_id = self.kwargs.get('pk')
         category_item = get_object_or_404(ProductCategory, pk=category_id)
-        context_data['category'] = category_item
+        return category_item
+
+    def get_success_url(self):
+        return reverse('adminapp:products', args=[self._get_category().pk])
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+
+        if self.request.methot == 'GET':
+            context_data['category'] = self._get_category()
         return context_data
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_update(request, pk):
