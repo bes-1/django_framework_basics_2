@@ -22,6 +22,7 @@ from mainapp.views import index, products, contact
 
 urlpatterns = [
     path('', index, name='index'),
+    path('', include('social_django.urls', namespace='social')),
     path('products/', include('mainapp.urls', namespace='products')),
     path('auth/', include('authapp.urls', namespace='authapp')),
     path('basket/', include('basketapp.urls', namespace='basketapp')),
@@ -31,7 +32,6 @@ urlpatterns = [
 
     # path('admin/', admin.site.urls),
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
