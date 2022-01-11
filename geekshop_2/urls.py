@@ -29,7 +29,7 @@ urlpatterns = [
     path('admin/', include('adminapp.urls', namespace='adminapp')),
 
     path('contact/', contact, name='contact'),
-
+    path('orders/', include('ordersapp.urls', namespace='ordersapp')),
     # path('admin/', admin.site.urls),
 ]
 
