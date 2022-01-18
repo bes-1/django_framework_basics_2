@@ -1,0 +1,137 @@
+[
+    {
+      "category": "Дом",
+      "name": "Комфорт 1",
+      "image": "products_images/product-1.jpg",
+      "short_desc": "Настольная лампа.",
+      "description": "Подойдет для ночного чтения.",
+      "price": "2989.5",
+      "quantity": "17"
+    },
+    {
+      "category": "Дом",
+      "name": "Комфорт 2",
+      "image": "products_images/product-1-lg.jpg",
+      "short_desc": "Подушка для дивана.",
+      "description": "Подойдет для любого дивана.",
+      "price": "2150.25",
+      "quantity": "11"
+    },
+    {
+      "category": "Офис",
+      "name": "Комфорт 3",
+      "image": "products_images/product-2.jpg",
+      "short_desc": "Офисные стулья",
+      "description": "Подойдет для современного дизайна.",
+      "price": "4150.25",
+      "quantity": "8"
+    },
+    {
+      "category": "Модерн",
+      "name": "Стандарт 1",
+      "image": "products_images/product-2-sm.jpg",
+      "short_desc": "Настенный светильник.",
+      "description": "Подойдет для современного дизайна.",
+      "price": "3100.5",
+      "quantity": "19"
+    },
+    {
+      "category": "Дом",
+      "name": "Комфорт 4",
+      "image": "products_images/product-3.jpg",
+      "short_desc": "Электрический чайник.",
+      "description": "Позволит быстро вскепитить воду для Ваших нужд.",
+      "price": "5150.00",
+      "quantity": "9"
+    },
+    {
+      "category": "Классика",
+      "name": "Стандарт 2",
+      "image": "products_images/product-3-sm.jpg",
+      "short_desc": "Диван.",
+      "description": "Прекрасный выбор для Вашего зала.",
+      "price": "19350.00",
+      "quantity": "4"
+    },
+    {
+      "category": "Модерн",
+      "name": "Люкс",
+      "image": "products_images/product-4.jpg",
+      "short_desc": "Современный красный стул.",
+      "description": "Прекрасно будет смотреться на Вашей кухне.",
+      "price": "7350.00",
+      "quantity": "6"
+    },
+    {
+      "category": "Модерн",
+      "name": "Люкс",
+      "image": "products_images/product-4-sm.jpg",
+      "short_desc": "Современные настенные часы.",
+      "description": "Прекрасно будет смотреться на Вашей кухне.",
+      "price": "2350.00",
+      "quantity": "3"
+    },
+    {
+      "category": "Модерн",
+      "name": "Люкс",
+      "image": "products_images/product-5-sm.jpg",
+      "short_desc": "Современная люстра.",
+      "description": "Отлично впишется в Ваш современный дизайн.",
+      "price": "8155.50",
+      "quantity": "7"
+    },
+    {
+      "category": "Модерн",
+      "name": "Люкс",
+      "image": "products_images/product-11.jpg",
+      "short_desc": "Современная люстра.",
+      "description": "Отлично впишется в Ваш современный дизайн.",
+      "price": "6155.50",
+      "quantity": "5"
+    },
+    {
+      "category": "Офис",
+      "name": "Стандарт 2",
+      "image": "products_images/product-21.jpg",
+      "short_desc": "Стул.",
+      "description": "Находка для офиса. С ним Вы почувствуетя себя увереннее.",
+      "price": "2155.50",
+      "quantity": "15"
+    },
+    {
+      "category": "Дом",
+      "name": "Люкс",
+      "image": "products_images/product-31.jpg",
+      "short_desc": "Настольный светильник",
+      "description": "С ним Ваш ребенок будет читать еще безопаснее",
+      "price": "3500.00",
+      "quantity": "9"
+    },
+    {
+      "category": "Классика",
+      "name": "Стандарт 5",
+      "image": "products_images/product-41.jpg",
+      "short_desc": "Настенный светильник",
+      "description": "С ним Ваше чтение книг по вечерам станет более приятным",
+      "price": "7510.00",
+      "quantity": "9"
+    },
+    {
+      "category": "Дом",
+      "name": "Модерн",
+      "image": "products_images/product-51.jpg",
+      "short_desc": "Чаша для помола",
+      "description": "С таким аксессуаром для кухни, любая соседка позавидует",
+      "price": "7510.00",
+      "quantity": "9"
+    },
+      {
+      "category": "Дом",
+      "name": "Модерн",
+      "image": "products_images/product-61.jpg",
+      "short_desc": "Ваза",
+      "description": "Только истинные ценители современности позволят себе такую роскошь!",
+      "price": "75100.00",
+      "quantity": "3"
+    }
+]
