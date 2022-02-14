@@ -3,6 +3,7 @@ import random
 from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.cache import cache_page
 
 # Create your views here.
 from basketapp.models import Basket
@@ -44,6 +45,7 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 
+@cache_page(3600)
 def products(request, pk=None, page=1):
     links_menu = get_links_menu()
 
