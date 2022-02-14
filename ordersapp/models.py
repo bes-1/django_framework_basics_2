@@ -29,20 +29,26 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def get_total_quantity(self):
-        _items = self.orderitems.select_related()
-        _total_quantity = sum(list(map(lambda x: x.quantity, _items)))
-        return _total_quantity
+    # def get_total_quantity(self):
+    #     _items = self.orderitems.select_related()
+    #     _total_quantity = sum(list(map(lambda x: x.quantity, _items)))
+    #     return _total_quantity
+    #
+    # def get_total_cost(self):
+    #     _items = self.orderitems.select_related()
+    #     _total_cost = sum(list(map(lambda x: x.quantity * x.product.price, _items)))
+    #     return _total_cost
 
-    def get_total_cost(self):
+    def get_summary(self):
         _items = self.orderitems.select_related()
-        _total_cost = sum(list(map(lambda x: x.quantity * x.product.price, _items)))
-        return _total_cost
+        return {
+            '_total_cost': sum(list(map(lambda x: x.quantity * x.product.price, _items))),
+            '_total_quantity': sum(list(map(lambda x: x.quantity, _items))),
+        }
 
     def delete(self, using=None, keep_parents=False):
         self.is_active = False
         self.save()
-
 
 
 class OrderItem(models.Model):
