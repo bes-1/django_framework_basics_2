@@ -1,11 +1,26 @@
 import random
 
+from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from basketapp.models import Basket
 from mainapp.models import Product, ProductCategory
+
+from django.core.cache import cache
+
+
+def get_links_menu():
+    if settings.LOW_CACHE:
+        key = 'links_menu'
+        links_menu = cache.get(key)
+        if links_menu is None:
+            links_menu = ProductCategory.objects.filter(is_active=True)
+            cache.set(key, links_menu)
+        return links_menu
+    else:
+        return ProductCategory.objects.filter(is_active=True)
 
 
 def get_hot_product():
@@ -30,7 +45,7 @@ def index(request):
 
 
 def products(request, pk=None, page=1):
-    links_menu = ProductCategory.objects.all()
+    links_menu = get_links_menu()
 
     if pk is not None:
         if pk == 0:
@@ -74,7 +89,7 @@ def contact(request):
 
 
 def product(request, pk):
-    links_menu = ProductCategory.objects.all()
+    links_menu = get_links_menu()
     context = {
         'product': get_object_or_404(Product, pk=pk),
         'links_menu': links_menu,
