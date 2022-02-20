@@ -6,6 +6,7 @@ from django.urls import reverse
 
 from basketapp.models import Basket
 from mainapp.models import Product
+from django.db.models import F
 
 
 @login_required
@@ -27,7 +28,8 @@ def basket_add(request, pk):  # pk - Product.pk
             user=request.user,
             product=product_item
         )
-    basket_item.quantity += 1
+    # basket_item.quantity += 1
+    basket_item.quantity =F('quantity') + 1
     basket_item.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
